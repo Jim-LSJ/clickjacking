@@ -24,13 +24,13 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="opacity.html">Opacity</a>
+                        <a class="nav-link" href="css_property/opacity.html">Opacity</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="z_index.html">z-index</a>
+                        <a class="nav-link" href="css_property/z_index.html">z-index</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="opacity_zindex.html">Opacity & z-index</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="css_property/opacity_zindex.html">Opacity & z-index</a>
                     </li>
                 </ul>
             </div>  
@@ -42,13 +42,13 @@
                     <h3>Demo List</h3>
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="opacity.html">Opacity</a>
+                            <a class="nav-link" href="css_property/opacity.html">Opacity</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="z_index.html">z-index</a>
+                            <a class="nav-link" href="css_property/z_index.html">z-index</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="opacity_zindex.html">Opacity & z-index</a>
+                            <a class="nav-link active" href="css_property/opacity_zindex.html">Opacity & z-index</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link disabled" href="#">Disabled</a>
@@ -59,25 +59,29 @@
 
                 <div class="col-sm-8">
                     <form action="/action_page.php">
-                        <h2>z-index of cat: <b id="input-value1">0</b></h2>
+                        <h2>Cat</h2>
+                        <p>z-index: 0, opacity: <b id="input-value1">1</b></p>
                         <div class="form-group">
-                            <input id="input-bar1" type="range" class="form-control-range" onchange="changeValue();" min="-10" max="10" step="1" value="0" name="range">
+                            <input id="input-bar1" type="range" class="form-control-range" onchange="changeValue();" min="0" max="1" step="0.01" value="1" name="range">
                         </div>
-                        <h2>z-index of dog: <b id="input-value2">1</b></h2>
+                        <h2>Dog</h2>
+                        <p>z-index: 1, opacity: <b id="input-value2">0.5</b></p>
                         <div class="form-group">
-                            <input id="input-bar2" type="range" class="form-control-range" onchange="changeValue();" min="-10" max="10" step="1" value="1" name="range">
+                            <input id="input-bar2" type="range" class="form-control-range" onchange="changeValue();" min="0" max="1" step="0.01" value="0.5" name="range">
+                        </div>
+                        <h2>Right-shift Dog Image</h2>
+                        <div class="form-group">
+                            <input id="input-bar3" type="range" class="form-control-range" onchange="changeValue();" min="0" max="32" step="1" value="0" name="range">
                         </div>
                     </form>
                     <div style="position: relative; height: 20em">
-                        <div id="image1" style="position: absolute; z-index: 0;">
-                            <img src="cat.jpg" style="width: 32em; height: 18em;">
+                        <div id="div1" style="position: absolute; z-index: 0;">
+                            <img id="image1" src="img/cat.jpg" style="width: 32em; height: 18em;">
                         </div>
-                        <div id="image2" style="position: absolute; z-index: 1; left: 16em;">
-                            <img src="dog.jpg" style="width: 32em; height: 18em;">
+                        <div id="div2" style="position: absolute; z-index: 1;">
+                            <img id="image2" src="img/dog.jpg" style="width: 32em; height: 18em; opacity: 0.5">
                         </div>
                     </div>
-                    <p>Position: absolute</p>
-                    <p><a href="https://zh-tw.learnlayout.com/position.html">more info</a> about CSS position</p>
                 </div>
             </div>
         </div>
@@ -89,10 +93,12 @@
             function changeValue(){
                 var input = document.getElementById("input-bar1");
                 document.getElementById('input-value1').innerHTML = input.value;
-                document.getElementById("image1").style.zIndex = input.value;
+                document.getElementById("image1").style.opacity = input.value;
                 var input = document.getElementById("input-bar2");
                 document.getElementById('input-value2').innerHTML = input.value;
-                document.getElementById("image2").style.zIndex = input.value;
+                document.getElementById("image2").style.opacity = input.value;
+                var input = document.getElementById("input-bar3");
+                document.getElementById("div2").style.left = input.value.toString() + "em";
             }   
         </script>
     </body>
