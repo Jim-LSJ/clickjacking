@@ -8,6 +8,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+            body,html{
+                height:100%;
+            }
+        </style>
     </head>
 
     <body>
@@ -68,12 +73,12 @@
                             <input id="input-bar2" type="range" class="form-control-range" onchange="changeValue();" min="-10" max="10" step="1" value="1" name="range">
                         </div>
                     </form>
-                    <div style="position: relative; height: 20em">
-                        <div id="image1" style="position: absolute; z-index: 0; max-width: 50%;">
-                            <img src="../img/cat.jpg" style="width: 32em; height: auto;">
+                    <div style="position: relative; height: 100%">
+                        <div id="image1" style="position: absolute; z-index: 0; max-width: 66%;">
+                            <img src="../img/cat.jpg" style="width: 100%; height: auto;">
                         </div>
-                        <div id="image2" style="position: absolute; z-index: 1; max-width: 50%; left: 50%;">
-                            <img src="../img/dog.jpg" style="width: 32em; height: auto;">
+                        <div id="image2" style="position: absolute; z-index: 1; max-width: 66%; left: 33%;">
+                            <img src="../img/dog.jpg" style="width: 100%; height: auto;">
                         </div>
                     </div>
                     <p>Position: absolute</p>
@@ -82,8 +87,8 @@
             </div>
         </div>
 
-        <div class="jumbotron text-center" style="margin-bottom:0">
-        </div>
+        <!-- <div class="jumbotron text-center" style="margin-bottom:0">
+        </div> -->
 
         <script>
             function changeValue(){
