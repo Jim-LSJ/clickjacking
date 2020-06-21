@@ -12,18 +12,11 @@
             body,html{
                 height:100%;
             }
-            #decoy{
-                position: absolute;
-                z-index: 1;
-            }
-            #target{
-                position: absolute;
-                z-index: 2;
-                width: 350px;
-                height: 40px;
-                padding-left: 8px;
-                margin-top: 90px;
-                background: black;
+            .pixel{
+                position: relative;
+                width: 15px;
+                height: 15px;
+                overflow: hidden;
             }
         </style>
     </head>
@@ -31,7 +24,7 @@
     <body>
 
         <div class="jumbotron text-center" style="margin-bottom:0">
-            <h1>Partial Overlay</h1> 
+            <h1>Cropping</h1> 
         </div>
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -54,10 +47,10 @@
                         <a class="nav-link" href="../css_property/pointer_events.html">Pointer-events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./partial_overlay.html">Partial overlay</a>
+                        <a class="nav-link" href="./partial_overlay.html">Partial overlay</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./cropping.html">Cropping</a>
+                        <a class="nav-link active" href="./cropping.html">Cropping</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./cropping_art.html">Cropping Art</a>
@@ -90,10 +83,10 @@
                             <a class="nav-link disabled" href="#">Example</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="./partial_overlay.html">Partial overlay</a>
+                            <a class="nav-link" href="./partial_overlay.html">Partial overlay</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./cropping.html">Cropping</a>
+                            <a class="nav-link active" href="./cropping.html">Cropping</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./cropping_art.html">Cropping Art</a>
@@ -103,14 +96,11 @@
                 </div>
 
                 <div class="col-sm-8">
-                    <div style="position: relative; width: 100%; height: auto;">
-                        <div id="decoy" class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="350" data-height="70" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                            <blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore">
-                                <a href="https://www.facebook.com/facebook">Facebook</a>
-                            </blockquote>
-                        </div>
-                        <div id="target" class="fb-like" data-href="https://www.facebook.com/GoogleTaiwan" data-width="350" data-layout="standard" data-action="like" data-size="small" data-share="true">
-                        </div>
+                    <div id="con">
+                        <!-- <div class="pixel">
+                            <div class="fb-like" data-href="https://www.facebook.com/GoogleTaiwan" data-width="350" data-layout="standard" data-action="like" data-size="small" data-share="true">
+                            </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -120,18 +110,35 @@
         </div> -->
 
         <script>
-            function changeValue(n){
-                console.log(document.getElementById('div'+n.toString()).style.background)
-                if(document.getElementById('div'+n.toString()).style.background){
-                    document.getElementById('div'+n.toString()).style.background = "";
+            initial()
+            function initial(){
+                var container = document.getElementById("con");
+                for(y = 0 ; y < 5 ; y++){
+                    for(x = 0 ; x < 5 ; x++){
+                        var pixel = document.createElement("div");
+                        pixel.setAttribute("class", "pixel");
+                        pixel.style.left = (x*15).toString() + "px";
+                        if(x == 0)
+                            pixel.style.marginTop = "0px";
+                        else
+                            pixel.style.marginTop = "-15px";
+                        var target = document.createElement("div");
+                        target.setAttribute("class", "fb-like");
+                        target.setAttribute("data-href", "https://www.facebook.com/GoogleTaiwan");
+                        target.setAttribute("data-width", "350");
+                        target.setAttribute("data-layout", "standard");
+                        target.setAttribute("data-action", "like");
+                        target.setAttribute("data-size", "small");
+                        target.setAttribute("data-share", "true");
+
+                        pixel.appendChild(target);
+                        container.appendChild(pixel);
+                    }
                 }
-                else
-                    document.getElementById('div'+n.toString()).style.background = "rgba(255, 255, 255, 0.6)";
             }   
         </script>
 
-        <div id="fb-root"></div><script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v7.0" nonce="Sf5BO5TQ"></script>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v7.0" nonce="PMG6CsPh"></script>
+        <div id="fb-root"></div><script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v7.0" nonce="PMG6CsPh"></script>
 
     </body>
 </html>

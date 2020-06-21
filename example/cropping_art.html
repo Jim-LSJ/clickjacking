@@ -12,18 +12,23 @@
             body,html{
                 height:100%;
             }
-            #decoy{
-                position: absolute;
-                z-index: 1;
-            }
             #target{
                 position: absolute;
+                width: 48px;
+                height: 25px;
                 z-index: 2;
-                width: 350px;
-                height: 40px;
+                overflow: hidden;
+                opacity: 0;
+            }
+            #art{
+                position: absolute;
+                width: 48px;
+                height: 25px;
+                z-index: 1;
+                font-size: 10px;
                 padding-left: 8px;
-                margin-top: 90px;
-                background: black;
+                padding-top: 5px;
+                /* pointer-events: none; */
             }
         </style>
     </head>
@@ -31,7 +36,7 @@
     <body>
 
         <div class="jumbotron text-center" style="margin-bottom:0">
-            <h1>Partial Overlay</h1> 
+            <h1>Cropping Art</h1> 
         </div>
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -54,13 +59,13 @@
                         <a class="nav-link" href="../css_property/pointer_events.html">Pointer-events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./partial_overlay.html">Partial overlay</a>
+                        <a class="nav-link" href="./partial_overlay.html">Partial overlay</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./cropping.html">Cropping</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./cropping_art.html">Cropping Art</a>
+                        <a class="nav-link active" href="./cropping_art.html">Cropping Art</a>
                     </li>
                 </ul>
             </div>  
@@ -90,13 +95,13 @@
                             <a class="nav-link disabled" href="#">Example</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="./partial_overlay.html">Partial overlay</a>
+                            <a class="nav-link" href="./partial_overlay.html">Partial overlay</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./cropping.html">Cropping</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./cropping_art.html">Cropping Art</a>
+                            <a class="nav-link active" href="./cropping_art.html">Cropping Art</a>
                         </li>
                     </ul>
                     <hr class="d-sm-none">
@@ -104,14 +109,14 @@
 
                 <div class="col-sm-8">
                     <div style="position: relative; width: 100%; height: auto;">
-                        <div id="decoy" class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="350" data-height="70" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                            <blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore">
-                                <a href="https://www.facebook.com/facebook">Facebook</a>
-                            </blockquote>
+                        <div id="target" onmouseover="changeValue(1)" onmouseout="changeValue(0)">
+                            <div class="fb-like" data-href="https://www.facebook.com/GoogleTaiwan" data-width="350" data-layout="standard" data-action="like" data-size="small" data-share="true">
+                            </div>
                         </div>
-                        <div id="target" class="fb-like" data-href="https://www.facebook.com/GoogleTaiwan" data-width="350" data-layout="standard" data-action="like" data-size="small" data-share="true">
+                        <div>
+                            <button id="art" type="button" class="btn btn-success">Search</button>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>
@@ -120,18 +125,15 @@
         </div> -->
 
         <script>
-            function changeValue(n){
-                console.log(document.getElementById('div'+n.toString()).style.background)
-                if(document.getElementById('div'+n.toString()).style.background){
-                    document.getElementById('div'+n.toString()).style.background = "";
-                }
+            function changeValue(set){
+                if(set)
+                    document.getElementById("art").style.backgroundColor = "#218838";
                 else
-                    document.getElementById('div'+n.toString()).style.background = "rgba(255, 255, 255, 0.6)";
-            }   
+                    document.getElementById("art").style.backgroundColor = "#28a745";
+            }
         </script>
 
-        <div id="fb-root"></div><script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v7.0" nonce="Sf5BO5TQ"></script>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v7.0" nonce="PMG6CsPh"></script>
+        <div id="fb-root"></div><script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v7.0" nonce="PMG6CsPh"></script>
 
     </body>
 </html>
