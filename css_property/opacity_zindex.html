@@ -71,23 +71,23 @@
                         </div>
                         <h2>Right-shift Dog Image</h2>
                         <div class="form-group">
-                            <input id="input-bar3" type="range" class="form-control-range" onchange="changeValue();" min="0" max="32" step="1" value="0" name="range">
+                            <input id="input-bar3" type="range" class="form-control-range" onchange="changeValue();" min="0" max="33" step="1" value="0" name="range">
                         </div>
                     </form>
-                    <div style="position: relative; height: 20em">
-                        <div id="div1" style="position: absolute; z-index: 0;">
-                            <img id="image1" src="../img/cat.jpg" style="width: 32em; height: 18em;">
+                    <div style="position: relative;">
+                        <div id="div1" style="position: absolute; z-index: 0; max-width: 66%;">
+                            <img id="image1" src="../img/cat.jpg" style="width: 100%; height: auto;">
                         </div>
-                        <div id="div2" style="position: absolute; z-index: 1;">
-                            <img id="image2" src="../img/dog.jpg" style="width: 32em; height: 18em; opacity: 0.5">
+                        <div id="div2" style="position: absolute; z-index: 1; max-width: 66%;">
+                            <img id="image2" src="../img/dog.jpg" style="width: 100%; height: auto; opacity: 0.5">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="jumbotron text-center" style="margin-bottom:0">
-        </div>
+        <!-- <div class="jumbotron text-center" style="margin-bottom:0">
+        </div> -->
 
         <script>
             function changeValue(){
@@ -98,7 +98,7 @@
                 document.getElementById('input-value2').innerHTML = input.value;
                 document.getElementById("image2").style.opacity = input.value;
                 var input = document.getElementById("input-bar3");
-                document.getElementById("div2").style.left = input.value.toString() + "em";
+                document.getElementById("div2").style.left = input.value.toString() + "%";
             }   
         </script>
     </body>
