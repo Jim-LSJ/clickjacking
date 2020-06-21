@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Demo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+
+        <div class="jumbotron text-center" style="margin-bottom:0">
+            <h1>Clickjacking!!</h1> 
+        </div>
+
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="opacity.html">Opacity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="z_index.html">z-index</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="opacity_zindex.html">Opacity & z-index</a>
+                    </li>
+                </ul>
+            </div>  
+        </nav>
+
+        <div class="container" style="margin-top:30px">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>Demo List</h3>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="opacity.html">Opacity</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="z_index.html">z-index</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="opacity_zindex.html">Opacity & z-index</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li> -->
+                    </ul>
+                    <hr class="d-sm-none">
+                </div>
+
+                <div class="col-sm-8">
+                    <form action="/action_page.php">
+                        <h2>Cat</h2>
+                        <p>z-index: 0, opacity: <b id="input-value1">1</b></p>
+                        <div class="form-group">
+                            <input id="input-bar1" type="range" class="form-control-range" onchange="changeValue();" min="0" max="1" step="0.01" value="1" name="range">
+                        </div>
+                        <h2>Dog</h2>
+                        <p>z-index: 1, opacity: <b id="input-value2">0.5</b></p>
+                        <div class="form-group">
+                            <input id="input-bar2" type="range" class="form-control-range" onchange="changeValue();" min="0" max="1" step="0.01" value="0.5" name="range">
+                        </div>
+                        <h2>Right-shift Dog Image</h2>
+                        <div class="form-group">
+                            <input id="input-bar3" type="range" class="form-control-range" onchange="changeValue();" min="0" max="32" step="1" value="0" name="range">
+                        </div>
+                    </form>
+                    <div style="position: relative; height: 20em">
+                        <div id="div1" style="position: absolute; z-index: 0;">
+                            <img id="image1" src="cat.jpg" style="width: 32em; height: 18em;">
+                        </div>
+                        <div id="div2" style="position: absolute; z-index: 1;">
+                            <img id="image2" src="dog.jpg" style="width: 32em; height: 18em; opacity: 0.5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="jumbotron text-center" style="margin-bottom:0">
+        </div>
+
+        <script>
+            function changeValue(){
+                var input = document.getElementById("input-bar1");
+                document.getElementById('input-value1').innerHTML = input.value;
+                document.getElementById("image1").style.opacity = input.value;
+                var input = document.getElementById("input-bar2");
+                document.getElementById('input-value2').innerHTML = input.value;
+                document.getElementById("image2").style.opacity = input.value;
+                var input = document.getElementById("input-bar3");
+                document.getElementById("div2").style.left = input.value.toString() + "em";
+            }   
+        </script>
+    </body>
+</html>
