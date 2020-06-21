@@ -12,6 +12,19 @@
             body,html{
                 height:100%;
             }
+            #decoy{
+                position: absolute;
+                z-index: 1;
+            }
+            #target{
+                position: absolute;
+                z-index: 2;
+                width: 180px;
+                height: 40px;
+                left: 5px;
+                margin-top: 90px;
+                background: black;
+            }
         </style>
     </head>
 
@@ -29,19 +42,19 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="./opacity.html">Opacity</a>
+                        <a class="nav-link" href="../css_property/opacity.html">Opacity</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./z_index.html">z-index</a>
+                        <a class="nav-link" href="../css_property/z_index.html">z-index</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./opacity_zindex.html">Opacity & z-index</a>
+                        <a class="nav-link" href="../css_property/opacity_zindex.html">Opacity & z-index</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pointer_events.html">Pointer-events</a>
+                        <a class="nav-link" href="../css_property/pointer_events.html">Pointer-events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../example/partial_overlay.html">Partial overlay</a>
+                        <a class="nav-link active" href="./partial_overlay.html">Partial overlay</a>
                     </li>
                 </ul>
             </div>  
@@ -56,48 +69,37 @@
                             <a class="nav-link disabled" href="#">CSS Property</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./opacity.html">Opacity</a>
+                            <a class="nav-link" href="../css_property/opacity.html">Opacity</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="./z_index.html">z-index</a>
+                            <a class="nav-link" href="../css_property/z_index.html">z-index</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./opacity_zindex.html">Opacity & z-index</a>
+                            <a class="nav-link" href="../css_property/opacity_zindex.html">Opacity & z-index</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./pointer_events.html">Pointer-events</a>
+                            <a class="nav-link" href="../css_property/pointer_events.html">Pointer-events</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#">Example</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../example/partial_overlay.html">Partial overlay</a>
+                            <a class="nav-link active" href="./partial_overlay.html">Partial overlay</a>
                         </li>
                     </ul>
                     <hr class="d-sm-none">
                 </div>
 
                 <div class="col-sm-8">
-                    <form action="/action_page.php">
-                        <h2>z-index of cat: <b id="input-value1">0</b></h2>
-                        <div class="form-group">
-                            <input id="input-bar1" type="range" class="form-control-range" onchange="changeValue();" min="-10" max="10" step="1" value="0" name="range">
+                    <div style="position: relative; width: 100%; height: auto;">
+                        <div id="decoy" class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore">
+                                <a href="https://www.facebook.com/facebook">Facebook</a>
+                            </blockquote>
                         </div>
-                        <h2>z-index of dog: <b id="input-value2">1</b></h2>
-                        <div class="form-group">
-                            <input id="input-bar2" type="range" class="form-control-range" onchange="changeValue();" min="-10" max="10" step="1" value="1" name="range">
-                        </div>
-                    </form>
-                    <div style="position: relative; height: 100%">
-                        <div id="image1" style="position: absolute; z-index: 0; max-width: 66%;">
-                            <img src="../img/cat.jpg" style="width: 100%; height: auto;">
-                        </div>
-                        <div id="image2" style="position: absolute; z-index: 1; max-width: 66%; left: 33%;">
-                            <img src="../img/dog.jpg" style="width: 100%; height: auto;">
+                        <div id="target" class="fb-like" data-href="https://www.facebook.com/GoogleTaiwan" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true">
                         </div>
                     </div>
-                    <p style="position: relative">Position: absolute</p>
-                    <p style="position: relative;"><a href="https://zh-tw.learnlayout.com/position.html">more info</a> about CSS position</p>
                 </div>
             </div>
         </div>
@@ -106,14 +108,18 @@
         </div> -->
 
         <script>
-            function changeValue(){
-                var input = document.getElementById("input-bar1");
-                document.getElementById('input-value1').innerHTML = input.value;
-                document.getElementById("image1").style.zIndex = input.value;
-                var input = document.getElementById("input-bar2");
-                document.getElementById('input-value2').innerHTML = input.value;
-                document.getElementById("image2").style.zIndex = input.value;
+            function changeValue(n){
+                console.log(document.getElementById('div'+n.toString()).style.background)
+                if(document.getElementById('div'+n.toString()).style.background){
+                    document.getElementById('div'+n.toString()).style.background = "";
+                }
+                else
+                    document.getElementById('div'+n.toString()).style.background = "rgba(255, 255, 255, 0.6)";
             }   
         </script>
+
+        <div id="fb-root"></div><script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v7.0" nonce="Sf5BO5TQ"></script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v7.0" nonce="PMG6CsPh"></script>
+
     </body>
 </html>

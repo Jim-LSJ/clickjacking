@@ -8,6 +8,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+            body,html{
+                height:100%;
+            }
+        </style>
     </head>
 
     <body>
@@ -32,6 +37,12 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="./opacity_zindex.html">Opacity & z-index</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pointer_events.html">Pointer-events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../example/partial_overlay.html">Partial overlay</a>
+                    </li>
                 </ul>
             </div>  
         </nav>
@@ -42,6 +53,9 @@
                     <h3>Demo List</h3>
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
+                            <a class="nav-link disabled" href="#">CSS Property</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="./opacity.html">Opacity</a>
                         </li>
                         <li class="nav-item">
@@ -50,9 +64,15 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="./opacity_zindex.html">Opacity & z-index</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
-                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pointer_events.html">Pointer-events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Example</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../example/partial_overlay.html">Partial overlay</a>
+                        </li>
                     </ul>
                     <hr class="d-sm-none">
                 </div>
@@ -74,7 +94,7 @@
                             <input id="input-bar3" type="range" class="form-control-range" onchange="changeValue();" min="0" max="33" step="1" value="0" name="range">
                         </div>
                     </form>
-                    <div style="position: relative;">
+                    <div style="position: relative; height: 100%">
                         <div id="div1" style="position: absolute; z-index: 0; max-width: 66%;">
                             <img id="image1" src="../img/cat.jpg" style="width: 100%; height: auto;">
                         </div>
