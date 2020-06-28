@@ -12,6 +12,19 @@
             body,html{
                 height:100%;
             }
+            #target_example{
+                width: 48px;
+                height: 25px;
+                overflow: hidden;
+            }
+            #art_example{
+                width: 48px;
+                height: 25px;
+                font-size: 10px;
+                padding-left: 8px;
+                padding-top: 5px;
+            }
+
             #target{
                 position: absolute;
                 width: 48px;
@@ -108,7 +121,22 @@
                 </div>
 
                 <div class="col-sm-8">
+                    <p>Description: Draw arbitrary art and overlay the transparent target element on it.</p>
+                    <div>
+                        <p><b>Target element: A clickable button which opacity will be set to 0 (transparent).</b></p>
+                        <div id="target_example" onmouseover="changeValue_example(1)" onmouseout="changeValue_example(0)">
+                            <div class="fb-like" data-href="https://www.facebook.com/GoogleTaiwan" data-width="350" data-layout="standard" data-action="like" data-size="small" data-share="true">
+                            </div>
+                        </div>
+                        <br>
+                        <p><b>Decoy: A fake button which color can be changed by mouse over on the target element.</b></p>
+                        <div>
+                            <button id="art_example" type="button" class="btn btn-success">Search</button>
+                        </div>
+                    </div>
+                    <br>
                     <div style="position: relative; width: 100%; height: 100%;">
+                        <p><b>Overlay the transparent decoy on the fake search button</b></p>
                         <div id="target" onmouseover="changeValue(1)" onmouseout="changeValue(0)">
                             <div class="fb-like" data-href="https://www.facebook.com/GoogleTaiwan" data-width="350" data-layout="standard" data-action="like" data-size="small" data-share="true">
                             </div>
@@ -130,6 +158,12 @@
                     document.getElementById("art").style.backgroundColor = "#218838";
                 else
                     document.getElementById("art").style.backgroundColor = "#28a745";
+            }
+            function changeValue_example(set){
+                if(set)
+                    document.getElementById("art_example").style.backgroundColor = "#218838";
+                else
+                    document.getElementById("art_example").style.backgroundColor = "#28a745";
             }
         </script>
 
